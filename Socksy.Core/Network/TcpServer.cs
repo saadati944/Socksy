@@ -2,12 +2,13 @@
 
 namespace Socksy.Core.Network;
 
-internal class TcpServer : IDisposable
+internal sealed class TcpServer : IDisposable
 {
     private readonly TcpListener _listener;
     private readonly Func<TcpClient, Task> _onConnectionEstablished;
     private CancellationTokenSource? _cancellationTokenSource;
     private CancellationToken _cancellationToken;
+    private int _activeRequests;
     private bool _isListening;
 
     public TcpServer(IPEndPoint localEndPoint, Func<TcpClient, Task> onConnectionEstablished)
@@ -33,7 +34,11 @@ internal class TcpServer : IDisposable
 
     public void Stop()
     {
+        if(!_isListening)
+            return;
+
         _listener.Stop();
+        WaitForAllActiveConnectionRequestsToComplete().Wait();
         _isListening = false;
         _cancellationTokenSource?.Cancel();
     }
@@ -43,7 +48,19 @@ internal class TcpServer : IDisposable
         while(!_cancellationToken.IsCancellationRequested)
         {
             var tcpClient = await _listener.AcceptTcpClientAsync(_cancellationToken);
-            _ = _onConnectionEstablished(tcpClient);
+            Interlocked.Add(ref _activeRequests, 1);
+
+            _ = _onConnectionEstablished(tcpClient).ContinueWith((t) => {
+                Interlocked.Add(ref _activeRequests, -1);
+            });
+        }
+    }
+
+    private async Task WaitForAllActiveConnectionRequestsToComplete()
+    {
+        while(_activeRequests > 0)
+        {
+            await Task.Delay(10);
         }
     }
 

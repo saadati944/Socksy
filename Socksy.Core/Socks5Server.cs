@@ -1,16 +1,19 @@
-﻿using Socksy.Core.Network;
-using System.Buffers;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Socksy.Core;
-public class Socks5Server : IDisposable
+
+public sealed class Socks5Server : IDisposable
 {
     private readonly TcpServer _server;
-
-    public Socks5Server(IPEndPoint localEndPoint)
+    private readonly Action<Request>? _onClientConnected;
+    
+    public Socks5Server(IPEndPoint localEndPoint, Action<Request>? onClientConnected = null)
     {
         _server = new TcpServer(localEndPoint, OnConnectionEstablished);
+        _onClientConnected = onClientConnected;
     }
+
+    public bool IsListening => _server.IsListening;
 
     public void Start()
     {
@@ -22,11 +25,14 @@ public class Socks5Server : IDisposable
         _server.Stop();
     }
 
-    public bool IsListening => _server.IsListening;
-
     private async Task OnConnectionEstablished(TcpClient tcpClient)
     {
+        var request = Request.CreateFromTcpClient(tcpClient);
+
         await Task.CompletedTask;
+
+        if (_onClientConnected is not null)
+            _onClientConnected(request);
     }
 
     public TaskAwaiter GetAwaiter()
@@ -34,9 +40,9 @@ public class Socks5Server : IDisposable
         return _server.GetAwaiter();
     }
 
-
     public void Dispose()
     {
+        Stop();
         _server.Dispose();
     }
 }
