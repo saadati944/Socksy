@@ -4,16 +4,11 @@ namespace Socksy.Core.Test.Network;
 
 public class NetHelperTests
 {
-    private static int _lastPort = 54000;
-    private static int TempPort => _lastPort++;
-
     [Fact]
     public async void CreateTcpConnectionTo_WithValidEndpoint_EstablishesTcpConnection()
     {
         //Arrange
-        var randomPort = TempPort;
-        var localIP = IPAddress.Loopback;
-        var endpoint = new IPEndPoint(localIP, randomPort);
+        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
         var listener = new TcpListener(endpoint);
 
         //Act
@@ -34,9 +29,7 @@ public class NetHelperTests
     {
         //Arrange
         var timeout = 2000;
-        var randomPort = TempPort;
-        var localIP = IPAddress.Loopback;
-        var endpoint = new IPEndPoint(localIP, randomPort);
+        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
         var listener = new TcpListener(endpoint);
 
         //Act

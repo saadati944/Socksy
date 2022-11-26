@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Socksy.Core.Test;
 
-namespace Socksy.Core.Test
+internal static class Fixtures
 {
-    internal static class Fixtures
+    public static IPEndPoint GetLocalendpointWithTemplatePortNumber()
     {
-        private static int _lastTempPort = 54678;
+        return new IPEndPoint(IPAddress.Loopback, GetNextFreePort());
+    }
 
-        public static IPEndPoint GetLocalendpointWithTemplatePortNumber()
-        {
-            return new IPEndPoint(IPAddress.Loopback, _lastTempPort++);
-        }
+    private static int GetNextFreePort()
+    {
+        using var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        socket.Bind(new IPEndPoint(IPAddress.Loopback, 0));
+        return ((IPEndPoint)socket.LocalEndPoint!).Port;
     }
 }

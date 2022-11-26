@@ -33,9 +33,9 @@ internal class TcpServer : IDisposable
 
     public void Stop()
     {
-        _cancellationTokenSource!.Cancel();
         _listener.Stop();
         _isListening = false;
+        _cancellationTokenSource?.Cancel();
     }
 
     private async Task MainLoop()
