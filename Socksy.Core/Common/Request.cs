@@ -1,4 +1,4 @@
-﻿namespace Socksy.Core.Models;
+﻿namespace Socksy.Core.Server;
 
 public struct Request
 {

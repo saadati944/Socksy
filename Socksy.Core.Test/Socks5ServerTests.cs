@@ -1,4 +1,4 @@
-﻿using Socksy.Core.Models;
+﻿using Socksy.Core.Server;
 using Socksy.Core.Network;
 
 namespace Socksy.Core.Test;
