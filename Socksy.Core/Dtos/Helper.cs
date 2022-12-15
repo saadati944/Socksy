@@ -12,4 +12,16 @@ internal static class Helper
 
     public static void ReturnByteArray(byte[] data)
         => ArrayPool<byte>.Shared.Return(data);
+
+    public static void EnsureReceivedBytes(int actualReceivedBytes, int expected)
+    {
+        if (actualReceivedBytes != expected)
+            throw new Exception("Bad request!");
+    }
+
+    public static void EnsureSentBytes(int actualSentBytes, int expected)
+    {
+        if (actualSentBytes != expected)
+            throw new Exception();
+    }
 }

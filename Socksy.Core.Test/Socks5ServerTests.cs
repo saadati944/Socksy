@@ -1,7 +1,4 @@
-﻿using Socksy.Core.Server;
-using Socksy.Core.Network;
-
-namespace Socksy.Core.Test;
+﻿namespace Socksy.Core.Test;
 
 public class Socks5ServerTests
 {

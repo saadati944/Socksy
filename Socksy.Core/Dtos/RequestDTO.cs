@@ -2,23 +2,34 @@
 
 namespace Socksy.Core.Dtos;
 
-public class RequestDTO
+internal class RequestDTO
 {
     public byte VER { get; private set; }
     public RequestCMD CMD { get; private set; }
     public byte RSV { get; private set; }
     public AddressTYPE ATYPE { get; private set; }
-    public byte[] DST_ADDR { get; private set; }
+    public byte[]? DST_ADDR { get; private set; }
     public string DST_ADDR_STRING => ATYPE == AddressTYPE.DOMAINNAME
-        ? System.Text.Encoding.ASCII.GetString(DST_ADDR)
-        : string.Join(", ", DST_ADDR);
+        ? System.Text.Encoding.ASCII.GetString(DST_ADDR!)
+        : string.Join(", ", DST_ADDR!);
+
+    public IPAddress? DST_ADDR_IPADDRESS => ATYPE == AddressTYPE.DOMAINNAME
+        ? Dns.GetHostAddresses(DST_ADDR_STRING).OrderByDescending(i => i.AddressFamily == AddressFamily.InterNetwork ? 1 : 0).FirstOrDefault()
+        : new IPAddress(DST_ADDR!);
+
     public ushort DST_PORT { get; private set; }
 
-    public static RequestDTO GetFromSocket(Socket socket)
+    private RequestDTO()
+    {
+    }
+
+    public static RequestDTO GetFromSocket(ISocket socket)
     {
         var data = Helper.RentByteArray(256);
 
-        socket.Receive(data, 0, 4, SocketFlags.None);
+        var received = socket.Receive(data, 0, 4);
+        Helper.EnsureReceivedBytes(received, 4);
+
         var ver = data[0];
         var cmd = data[1];
         var rsv = data[2];
@@ -28,7 +39,8 @@ public class RequestDTO
         switch (atype)
         {
             case 3:
-                socket.Receive(data, 0, 1, SocketFlags.None);
+                received = socket.Receive(data, 0, 1);
+                Helper.EnsureReceivedBytes(received, 1);
                 dstAddrLen = data[0];
                 break;
             case 1:
@@ -39,11 +51,13 @@ public class RequestDTO
                 break;
         }
 
-        socket.Receive(data, 0, dstAddrLen, SocketFlags.None);
+        received = socket.Receive(data, 0, dstAddrLen);
+        Helper.EnsureReceivedBytes(received, dstAddrLen);
         var DSTaddr = new byte[dstAddrLen];
         Array.Copy(data, 0, DSTaddr, 0, dstAddrLen);
 
-        socket.Receive(data, 0, 2, SocketFlags.None);
+        received = socket.Receive(data, 0, 2);
+        Helper.EnsureReceivedBytes(received, 2);
         ushort DSTport = Helper.GetPort(data);
 
         Helper.ReturnByteArray(data);

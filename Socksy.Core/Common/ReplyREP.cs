@@ -1,6 +1,6 @@
 ﻿namespace Socksy.Core.Common;
 
-public enum ReplyREP
+internal enum ReplyREP
 {
     Succeeded = 0,
     General_socks5_server_failure = 1,

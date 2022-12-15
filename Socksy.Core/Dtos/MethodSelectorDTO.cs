@@ -1,27 +1,30 @@
 ﻿namespace Socksy.Core.Dtos;
 
-public struct MethodSelectorDTO
+internal class MethodSelectorDTO
 {
     public byte VER { get; private set; }
     public byte NMETHODS { get; private set; }
-    public byte[] METHODS { get; private set; }
+    public byte[]? METHODS { get; private set; }
 
-    public static MethodSelectorDTO GetFromSocket(Socket socket)
+    private MethodSelectorDTO()
+    {
+    }
+
+    public static MethodSelectorDTO GetFromSocket(ISocket socket)
     {
         Span<byte> b = stackalloc byte[2];
         var received = socket.Receive(b);
-        if (received != 2)
-            throw new Exception("Bad request!");
-        Span<byte> ms = stackalloc byte[b[1]];
+        Helper.EnsureReceivedBytes(received, 2);
+
+        var ms = new byte[b[1]];
         received = socket.Receive(ms);
-        if (received != b[1])
-            throw new Exception("Bad request!");
+        Helper.EnsureReceivedBytes(received, b[1]);
 
         return new MethodSelectorDTO
         {
             VER = b[0],
             NMETHODS = b[1],
-            METHODS = ms.ToArray()
+            METHODS = ms
         };
     }
 }

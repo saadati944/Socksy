@@ -1,6 +1,6 @@
 ﻿namespace Socksy.Core.Common;
 
-public enum RequestCMD
+internal enum RequestCMD
 {
     CONNECT = 1,
     BIND = 2,

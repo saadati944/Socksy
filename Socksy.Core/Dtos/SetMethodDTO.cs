@@ -1,9 +1,13 @@
 ﻿namespace Socksy.Core.Dtos;
 
-public class SetMethodDTO
+internal class SetMethodDTO
 {
     public byte VER { get; private set; }
     public byte METHOD { get; private set; }
+
+    private SetMethodDTO()
+    {
+    }
 
     public static SetMethodDTO Create(byte ver, byte method)
     {
@@ -14,8 +18,9 @@ public class SetMethodDTO
         };
     }
 
-    public void Send(Socket socket)
+    public void Send(ISocket socket)
     {
-        socket.Send(new byte[] { VER, METHOD });
+        var sent = socket.Send(stackalloc byte[] { VER, METHOD });
+        Helper.EnsureSentBytes(sent, 2);
     }
 }

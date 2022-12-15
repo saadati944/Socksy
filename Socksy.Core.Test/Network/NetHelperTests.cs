@@ -1,6 +1,4 @@
-﻿using Socksy.Core.Network;
-
-namespace Socksy.Core.Test.Network;
+﻿namespace Socksy.Core.Test.Network;
 
 public class NetHelperTests
 {

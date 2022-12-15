@@ -1,6 +1,6 @@
 ﻿namespace Socksy.Core.Common;
 
-public enum AddressTYPE
+internal enum AddressTYPE
 {
     IPV4 = 1,
     DOMAINNAME = 3,
