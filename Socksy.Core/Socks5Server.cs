@@ -23,6 +23,9 @@ public sealed class Socks5Server : IDisposable
 
     public bool IsListening => _server.IsListening;
 
+    public long OutGoingBytes => _outCounter;
+    public long InCommingBytes => _inCounter;
+
     public void Start()
     {
         _server.Start();

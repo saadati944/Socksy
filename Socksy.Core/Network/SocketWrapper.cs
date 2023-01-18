@@ -23,7 +23,7 @@ internal struct SocketWrapper : ISocket, IDisposable
     }
 
     public IPEndPoint RemoteEndPoint
-        => _socket.RemoteEndPoint as IPEndPoint;
+        => (_socket.RemoteEndPoint as IPEndPoint)!;
 
     public int SendTimeout
     {

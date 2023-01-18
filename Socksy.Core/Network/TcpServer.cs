@@ -44,9 +44,9 @@ internal sealed class TcpServer : IDisposable
             return;
 
         _listener.Stop();
-        WaitForAllActiveConnectionRequestsToComplete().Wait();
         _isListening = false;
         _cancellationTokenSource?.Cancel();
+        WaitForAllActiveConnectionRequestsToComplete().Wait();
     }
 
     private async Task MainLoop()
