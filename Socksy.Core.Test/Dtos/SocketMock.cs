@@ -10,6 +10,15 @@ internal class SocketMock : ISocket
     public List<byte> SentData => _sentData;
     public bool Disposed => _disposed;
 
+    public bool Connected => throw new NotImplementedException();
+
+    public int Available => throw new NotImplementedException();
+
+    public int ReceiveTimeout { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public int SendTimeout { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+    public IPEndPoint RemoteEndPoint => throw new NotImplementedException();
+
     public SocketMock()
     {
         DataToReceive = new();
@@ -59,5 +68,15 @@ internal class SocketMock : ISocket
     public void Dispose()
     {
         _disposed = true;
+    }
+
+    public bool Poll(int v, SelectMode selectRead)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Close()
+    {
+        throw new NotImplementedException();
     }
 }

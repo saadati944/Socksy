@@ -7,7 +7,7 @@ public class SetMethodDTOTests
     {
         // Arrange
         byte ver = 5;
-        byte method = 0;
+        AuthenticationMETHOD method = AuthenticationMETHOD.NO_ACCEPTABLE_METHODS;
         var dto = SetMethodDTO.Create(ver, method);
         var socket = new SocketMock();
         
@@ -15,6 +15,6 @@ public class SetMethodDTOTests
         dto.Send(socket);
 
         // Assert
-        Assert.Equal(new byte[] { ver, method }, socket.SentData);
+        Assert.Equal(new byte[] { ver, (byte)method }, socket.SentData);
     }
 }

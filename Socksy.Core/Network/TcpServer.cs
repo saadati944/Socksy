@@ -5,20 +5,26 @@ namespace Socksy.Core.Network;
 internal sealed class TcpServer : IDisposable
 {
     private readonly TcpListener _listener;
-    private readonly Func<TcpClient, Task> _onConnectionEstablished;
+    private readonly Func<int, Request, Task> _onConnectionEstablished;
     private CancellationTokenSource? _cancellationTokenSource;
     private CancellationToken _cancellationToken;
+    private IPEndPoint _localEndPoint;
     private int _activeRequests;
     private bool _isListening;
+    private int _reqNum = 0;
 
-    public TcpServer(IPEndPoint localEndPoint, Func<TcpClient, Task> onConnectionEstablished)
+    public TcpServer(IPEndPoint localEndPoint, Func<int, Request, Task> onConnectionEstablished)
     {
+        _localEndPoint = localEndPoint;
         _listener = new TcpListener(localEndPoint);
         _onConnectionEstablished = onConnectionEstablished;
         _isListening = false;
     }
 
     public bool IsListening => _isListening;
+
+    public int ListeningPort => _localEndPoint.Port;
+    public IPAddress ListeningAddress => _localEndPoint.Address;
 
     public void Start()
     {
@@ -34,7 +40,7 @@ internal sealed class TcpServer : IDisposable
 
     public void Stop()
     {
-        if(!_isListening)
+        if (!_isListening)
             return;
 
         _listener.Stop();
@@ -45,12 +51,14 @@ internal sealed class TcpServer : IDisposable
 
     private async Task MainLoop()
     {
-        while(!_cancellationToken.IsCancellationRequested)
+        while (!_cancellationToken.IsCancellationRequested)
         {
             var tcpClient = await _listener.AcceptTcpClientAsync(_cancellationToken);
             Interlocked.Add(ref _activeRequests, 1);
+            Interlocked.Add(ref _reqNum, 1);
 
-            _ = _onConnectionEstablished(tcpClient).ContinueWith((t) => {
+            _ = _onConnectionEstablished(_reqNum, Request.CreateFromTcpClient(tcpClient)).ContinueWith((t) =>
+            {
                 Interlocked.Add(ref _activeRequests, -1);
             });
         }
@@ -58,7 +66,7 @@ internal sealed class TcpServer : IDisposable
 
     private async Task WaitForAllActiveConnectionRequestsToComplete()
     {
-        while(_activeRequests > 0)
+        while (_activeRequests > 0)
         {
             await Task.Delay(10);
         }

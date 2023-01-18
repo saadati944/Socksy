@@ -25,15 +25,16 @@ internal class RequestDTO
 
     public static RequestDTO GetFromSocket(ISocket socket)
     {
-        var data = Helper.RentByteArray(256);
+        var data = new byte[4];
 
-        var received = socket.Receive(data, 0, 4);
+        var received = socket.Receive(data);
         Helper.EnsureReceivedBytes(received, 4);
-
         var ver = data[0];
         var cmd = data[1];
         var rsv = data[2];
         var atype = data[3];
+
+        data = Helper.RentByteArray(256);
 
         var dstAddrLen = 0;
         switch (atype)
