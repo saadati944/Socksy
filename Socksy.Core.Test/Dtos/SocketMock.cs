@@ -1,6 +1,6 @@
 ﻿namespace Socksy.Core.Test.Dtos;
 
-internal class SocketMock : ISocket
+internal sealed class SocketMock : ISocket
 {
     private int _receiveOffset;
     private List<byte> _sentData = new List<byte>();

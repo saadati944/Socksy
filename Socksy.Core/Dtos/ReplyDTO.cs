@@ -2,7 +2,7 @@
 
 namespace Socksy.Core.Dtos;
 
-internal class ReplyDTO
+internal sealed class ReplyDTO
 {
     public byte VER { get; private set; }
     public ReplyREP REP { get; private set; }

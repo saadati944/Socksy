@@ -1,6 +1,6 @@
 ﻿namespace Socksy.Core.Dtos;
 
-internal class MethodSelectorDTO
+internal sealed class MethodSelectorDTO
 {
     public byte VER { get; private set; }
     public byte NMETHODS { get; private set; }

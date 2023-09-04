@@ -2,7 +2,7 @@
 
 namespace Socksy.Core.Dtos;
 
-internal class SetMethodDTO
+internal sealed class SetMethodDTO
 {
     public byte VER { get; private set; }
     public AuthenticationMETHOD METHOD { get; private set; }

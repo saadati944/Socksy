@@ -2,7 +2,7 @@
 
 namespace Socksy.Core.Dtos;
 
-internal class RequestDTO
+internal sealed class RequestDTO
 {
     public byte VER { get; private set; }
     public RequestCMD CMD { get; private set; }

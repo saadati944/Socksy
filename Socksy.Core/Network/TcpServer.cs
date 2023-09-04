@@ -54,12 +54,12 @@ internal sealed class TcpServer : IDisposable
         while (!_cancellationToken.IsCancellationRequested)
         {
             var tcpClient = await _listener.AcceptTcpClientAsync(_cancellationToken);
-            Interlocked.Add(ref _activeRequests, 1);
-            Interlocked.Add(ref _reqNum, 1);
+            Interlocked.Increment(ref _activeRequests);
+            Interlocked.Increment(ref _reqNum);
 
             _ = _onConnectionEstablished(_reqNum, Request.CreateFromTcpClient(tcpClient)).ContinueWith((t) =>
             {
-                Interlocked.Add(ref _activeRequests, -1);
+                Interlocked.Decrement(ref _activeRequests);
             });
         }
     }

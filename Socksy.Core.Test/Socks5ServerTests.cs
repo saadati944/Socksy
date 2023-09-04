@@ -21,6 +21,7 @@ public class Socks5ServerTests
         await Task.Delay(50);
 
         var sutIsListening = sut.IsListening;
+        client.Close();
 
         sut.Stop();
         await sut;
