@@ -136,20 +136,18 @@ public sealed class Socks5Server : IDisposable
         
         try
         {
-            int fails = 20;
+            int fails = 50;
             while (true)
             {
-                if (!from.Connected || !to.Connected)
-                    break;
                 var avail = from.Available;
                 if (avail == 0)
                 {
-                    if (!from.Poll(3000, SelectMode.SelectRead) && fails-- <= 0)
+                    if ((!from.Poll(3000, SelectMode.SelectRead) && fails-- <= 0) || !from.Connected || !to.Connected)
                         break;
                     await Task.Delay(5);
                     continue;
                 }
-                fails = 20;
+                fails = 50;
                 var buf = ArrayPool<byte>.Shared.Rent(avail);
                 from.Receive(new Span<byte>(buf, 0, avail));
                 to.Send(new Span<byte>(buf, 0, avail));
