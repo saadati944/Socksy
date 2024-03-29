@@ -1,7 +1,10 @@
 ﻿using Socksy.Core;
 using System.Net;
 
-bool debugMode = true;
+bool debugMode = false;
+#if DEBUG
+    debugMode = true;
+#endif
 
 Console.WriteLine("Listening on 127.0.0.1:3050");
 Socks5Server server = new Socks5Server(IPEndPoint.Parse("127.0.0.1:3050"),
@@ -21,7 +24,7 @@ _ = Task.Run(async () =>
     {
         while (await t.WaitForNextTickAsync())
         {
-            Console.Title = $"Connections: {server.ActiveConnections}, In: {server.InCommingBytes}, Out: {server.OutGoingBytes}";
+            Console.Title = $"Connections: {server.ActiveConnections.Count}, In: {server.InCommingBytes}, Out: {server.OutGoingBytes}";
         }
     }
     else

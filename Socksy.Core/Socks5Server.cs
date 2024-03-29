@@ -1,6 +1,7 @@
 ﻿using Socksy.Core.Common;
 using System.Buffers;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Socksy.Core;
@@ -171,6 +172,7 @@ public sealed class Socks5Server : IDisposable
         _server.Dispose();
     }
 
+    [Conditional("Debug")]
     private void Log(int requestNumber, Func<string> message)
         => _log?.Invoke(requestNumber, message());
 }
