@@ -5,7 +5,6 @@ bool debugMode = false;
 #if DEBUG
 debugMode = true;
 #endif
-Console.WriteLine(debugMode.ToString());
 
 bool verboseLogging = false;
 if (args.Contains("-v"))
@@ -13,15 +12,22 @@ if (args.Contains("-v"))
     verboseLogging = true;
 }
 
-if (verboseLogging || debugMode)
+string[]? blacklist = null;
+if (File.Exists("./blacklist.txt"))
 {
-    Console.Title = "Listening on 127.0.0.1:3050";
+    blacklist = File.ReadAllLines("./blacklist.txt").Where(l => !string.IsNullOrWhiteSpace(l)).ToArray();
 }
-Console.WriteLine("Listening on 127.0.0.1:3050");
 Socks5Server server = new Socks5Server(IPEndPoint.Parse("127.0.0.1:3050"),
-    logFunction: debugMode ? (n, s) => Console.WriteLine($"{n:D6} {s}") : null);
-
+    logFunction: debugMode ? (n, s) => Console.WriteLine($"{n:D6} {s}") : null,
+    options: new Socksy.Core.Common.ServerOptions
+    {
+        BlockedAddresses = blacklist
+    });
 server.Start();
+
+Console.WriteLine("Listening on 127.0.0.1:3050");
+if (verboseLogging || debugMode)
+    Console.Title = "Listening on 127.0.0.1:3050";
 
 Console.CancelKeyPress += (s, e) =>
 {

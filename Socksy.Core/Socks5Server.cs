@@ -3,27 +3,43 @@ using System.Buffers;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace Socksy.Core;
 
 public sealed class Socks5Server : IDisposable
 {
     private const int VER = 5;
-    
+
     private readonly TcpServer _server;
     private readonly Action<Request>? _onClientConnected;
     private readonly Action<int, string>? _log;
+    private Regex[]? _blackListRegexes = null;
 
     private readonly ConcurrentDictionary<int, ConnectionState> _activeConnections;
     private long _inCounter;
     private long _outCounter;
 
-    public Socks5Server(IPEndPoint localEndPoint, Action<Request>? onClientConnected = null, Action<int, string>? logFunction = null)
+    public Socks5Server(IPEndPoint localEndPoint, Action<Request>? onClientConnected = null, Action<int, string>? logFunction = null, ServerOptions? options = null)
     {
         _server = new TcpServer(localEndPoint, OnConnectionEstablished);
         _onClientConnected = onClientConnected;
         _activeConnections = new ConcurrentDictionary<int, ConnectionState>();
         _log = logFunction;
+
+        if (options is not null)
+            InitializeOptions(options);
+    }
+
+    private void InitializeOptions(ServerOptions options)
+    {
+        if (options.BlockedAddresses is not null && options.BlockedAddresses.Length > 0)
+        {
+            Log(0, () => $"Initializing black list with {options.BlockedAddresses.Length} items");
+            _blackListRegexes = new Regex[options.BlockedAddresses.Length];
+            for (int i = 0; i < options.BlockedAddresses.Length; i++)
+                _blackListRegexes[i] = new Regex(options.BlockedAddresses[i], RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
+        }
     }
 
     public bool IsListening => _server.IsListening;
@@ -69,6 +85,20 @@ public sealed class Socks5Server : IDisposable
 
             if (req.CMD == RequestCMD.CONNECT)
             {
+                if (AddressIsInBlackList(req.DST_ADDR_STRING))
+                {
+                    Log(reqNum, () => "Requested address was in black list");
+                    var blockedRep = ReplyDTO.Create(
+                        VER,
+                        ReplyREP.Connection_not_allowed_by_ruleset,
+                        _server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
+                        _server.ListeningAddress.GetAddressBytes(),
+                        (ushort)_server.ListeningPort);
+                    blockedRep.Send(socket);
+                    Log(reqNum, () => $"Not-Allowed Reply Sent. VER: {blockedRep.VER}, REP: {blockedRep.REP}, RSV: {blockedRep.RSV}, ATYPE: {blockedRep.ATYPE}, BND_ADDR: {blockedRep.BND_ADDR}, BND_ADDR_STRING: {blockedRep.BND_ADDR_STRING}");
+                    return;
+                }
+
                 IPEndPoint remote_endpoint = new IPEndPoint(
                     req.ATYPE switch
                     {
@@ -116,6 +146,18 @@ public sealed class Socks5Server : IDisposable
         }
     }
 
+    private bool AddressIsInBlackList(string destinationAddress)
+    {
+        if (_blackListRegexes is null || _blackListRegexes.Length == 0)
+            return false;
+
+        for (int i = 0; i < _blackListRegexes.Length; i++)
+            if (_blackListRegexes[i].IsMatch(destinationAddress))
+                return true;
+
+        return false;
+    }
+
     private async Task ExchangeData(int reqNum, ISocket remote, ISocket client)
     {
         remote.SendTimeout = 20000;
@@ -134,7 +176,7 @@ public sealed class Socks5Server : IDisposable
     private async Task MakeBridge(int reqNum, ISocket from, ISocket to, Action<int>? onAfterSendingData)
     {
         Log(reqNum, () => $"Making bridge from {from.RemoteEndPoint.Address}:{from.RemoteEndPoint.Port} to {to.RemoteEndPoint.Address}:{to.RemoteEndPoint.Port}");
-        
+
         try
         {
             int fails = 50;
