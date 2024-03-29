@@ -172,7 +172,7 @@ public sealed class Socks5Server : IDisposable
         _server.Dispose();
     }
 
-    [Conditional("Debug")]
+    [Conditional("DEBUG")]
     private void Log(int requestNumber, Func<string> message)
         => _log?.Invoke(requestNumber, message());
 }
