@@ -6,11 +6,12 @@ public class Socks5ServerTests
     public async void ServerAcceptsIncommingConnectionsAfterBeingStarted()
     {
         //Arrange
-        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
+        var options = Fixtures.GetOptionsWithLocalendpointWithTemplatePortNumber();
+        var endpoint = IPEndPoint.Parse(options.EndPoint);
         var customActionCalled = false;
         var onClientConnected = (Request r) => { customActionCalled = true; };
         var client = new TcpClient();
-        using var sut = new Socks5Server(endpoint, onClientConnected);
+        using var sut = new Socks5Server(onClientConnected, options: options);
 
         //Act
         sut.Start();
@@ -36,8 +37,8 @@ public class Socks5ServerTests
     public void ServerListensForIncommingConnectionsAfterBeingStarted()
     {
         //Arrange
-        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
-        using var sut = new Socks5Server(endpoint);
+        var options = Fixtures.GetOptionsWithLocalendpointWithTemplatePortNumber();
+        using var sut = new Socks5Server(options: options);
 
         //Act
         sut.Start();
@@ -51,8 +52,8 @@ public class Socks5ServerTests
     {
         //Arrange
         var delayMs = 50;
-        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
-        using var sut = new Socks5Server(endpoint);
+        var options = Fixtures.GetOptionsWithLocalendpointWithTemplatePortNumber();
+        using var sut = new Socks5Server(options: options);
 
         //Act
         sut.Start();
@@ -68,8 +69,8 @@ public class Socks5ServerTests
     {
         //Arrange
         var delayMs = 50;
-        var endpoint = Fixtures.GetLocalendpointWithTemplatePortNumber();
-        using var sut = new Socks5Server(endpoint);
+        var options = Fixtures.GetOptionsWithLocalendpointWithTemplatePortNumber();
+        using var sut = new Socks5Server(options: options);
 
         //Act
         sut.Start();

@@ -1,0 +1,9 @@
+{
+    "BlackList": [],
+    "WhiteList": [],
+    "DnsMap": [
+
+    ],
+    "EndPoint": "0.0.0.0:3050",
+    "SocketTimeOutMS": 20000
+}

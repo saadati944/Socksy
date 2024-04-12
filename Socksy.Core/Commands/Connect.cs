@@ -3,21 +3,28 @@ using Socksy.Core.Common;
 
 namespace Socksy.Core.Commands;
 
-internal static class ConnectCommand
+internal class ConnectCommand
 {
-    public static async Task ExecuteConnect(int reqNum, ISocket socket, RequestDTO req)
+    private readonly Configs configs;
+
+    public ConnectCommand(Configs configs)
+    {
+        this.configs = configs;
+    }
+
+    public async Task ExecuteConnect(int reqNum, ISocket socket, RequestDTO req)
     {
         if (AddressIsInBlackList(req.DST_ADDR_STRING))
         {
-            Configs.Log(reqNum, "Requested address was in black list");
+            configs.Log(reqNum, "Requested address was in black list");
             var blockedRep = ReplyDTO.Create(
                 Configs.VER,
                 ReplyREP.Connection_not_allowed_by_ruleset,
-                Configs._server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
-                Configs._server.ListeningAddress.GetAddressBytes(),
-                (ushort)Configs._server.ListeningPort);
+                configs.Server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
+                configs.Server.ListeningAddress.GetAddressBytes(),
+                (ushort)configs.Server.ListeningPort);
             blockedRep.Send(socket);
-            Configs.Log(reqNum, $"Not-Allowed Reply Sent. VER: {blockedRep.VER}, REP: {blockedRep.REP}, RSV: {blockedRep.RSV}, ATYPE: {blockedRep.ATYPE}, BND_ADDR: {blockedRep.BND_ADDR}, BND_ADDR_STRING: {blockedRep.BND_ADDR_STRING}");
+            configs.Log(reqNum, $"Not-Allowed Reply Sent. VER: {blockedRep.VER}, REP: {blockedRep.REP}, RSV: {blockedRep.RSV}, ATYPE: {blockedRep.ATYPE}, BND_ADDR: {blockedRep.BND_ADDR}, BND_ADDR_STRING: {blockedRep.BND_ADDR_STRING}");
             return;
         }
 
@@ -28,59 +35,59 @@ internal static class ConnectCommand
                 _ => Dns.GetHostAddresses(req.DST_ADDR_STRING, AddressFamily.InterNetwork)[0],
             },
             req.DST_PORT);
-        Configs.Log(reqNum, $"Connecting to remote endpoint. IP address: {remote_endpoint.Address}, port: {remote_endpoint.Port}");
-        Configs._activeConnections[reqNum] = ConnectionState.Connecting;
+        configs.Log(reqNum, $"Connecting to remote endpoint. IP address: {remote_endpoint.Address}, port: {remote_endpoint.Port}");
+        configs.ActiveConnections[reqNum] = ConnectionState.Connecting;
 
         TcpClient remoteClient = new TcpClient();
         await remoteClient.ConnectAsync(remote_endpoint);
         var remote = new SocketWrapper(remoteClient.Client);
-        Configs.Log(reqNum, $"Connected: {remoteClient.Connected}");
+        configs.Log(reqNum, $"Connected: {remoteClient.Connected}");
 
-        Configs.Log(reqNum, "Sending Reply");
+        configs.Log(reqNum, "Sending Reply");
         var rep = ReplyDTO.Create(
             Configs.VER,
             ReplyREP.Succeeded,
-            Configs._server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
-            Configs._server.ListeningAddress.GetAddressBytes(),
-            (ushort)Configs._server.ListeningPort);
+            configs.Server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
+            configs.Server.ListeningAddress.GetAddressBytes(),
+            (ushort)configs.Server.ListeningPort);
         rep.Send(socket);
-        Configs.Log(reqNum, $"Reply Sent. VER: {rep.VER}, REP: {rep.REP}, RSV: {rep.RSV}, ATYPE: {rep.ATYPE}, BND_ADDR: {rep.BND_ADDR}, BND_ADDR_STRING: {rep.BND_ADDR_STRING}");
+        configs.Log(reqNum, $"Reply Sent. VER: {rep.VER}, REP: {rep.REP}, RSV: {rep.RSV}, ATYPE: {rep.ATYPE}, BND_ADDR: {rep.BND_ADDR}, BND_ADDR_STRING: {rep.BND_ADDR_STRING}");
 
-        Configs.Log(reqNum, "Exchanging data ...");
-        Configs._activeConnections[reqNum] = ConnectionState.ExchangingData;
+        configs.Log(reqNum, "Exchanging data ...");
+        configs.ActiveConnections[reqNum] = ConnectionState.ExchangingData;
         await ExchangeData(reqNum, remote, socket);
     }
-    
-    private static bool AddressIsInBlackList(string destinationAddress)
-    {
-        if (Configs._blackListRegexes is null || Configs._blackListRegexes.Length == 0)
-            return false;
 
-        for (int i = 0; i < Configs._blackListRegexes.Length; i++)
-            if (Configs._blackListRegexes[i].IsMatch(destinationAddress))
-                return true;
+    private bool AddressIsInBlackList(string destinationAddress)
+    {
+        // if (configs.BlackListRegexes is null || configs.BlackListRegexes.Length == 0)
+        //     return false;
+
+        // for (int i = 0; i < configs.BlackListRegexes.Length; i++)
+        //     if (configs.BlackListRegexes[i].IsMatch(destinationAddress))
+        //         return true;
 
         return false;
     }
 
-    private static async Task ExchangeData(int reqNum, ISocket remote, ISocket client)
+    private async Task ExchangeData(int reqNum, ISocket remote, ISocket client)
     {
-        remote.SendTimeout = 20000;
-        remote.ReceiveTimeout = 20000;
-        client.SendTimeout = 20000;
-        client.ReceiveTimeout = 20000;
+        remote.SendTimeout = configs.SocketTimeOut;
+        remote.ReceiveTimeout = configs.SocketTimeOut;
+        client.SendTimeout = configs.SocketTimeOut;
+        client.ReceiveTimeout = configs.SocketTimeOut;
 
-        var t1 = MakeBridge(reqNum, remote, client, (i) => Interlocked.Add(ref Configs._inCounter, i));
-        var t2 = MakeBridge(reqNum, client, remote, (i) => Interlocked.Add(ref Configs._outCounter, i));
+        var t2 = MakeBridge(reqNum, client, remote, (i) => Interlocked.Add(ref configs.OutCounter, i));
+        var t1 = MakeBridge(reqNum, remote, client, (i) => Interlocked.Add(ref configs.InCounter, i));
 
         await Task.WhenAny(t1, t2);
         remote.Close();
         client.Close();
     }
 
-    private static async Task MakeBridge(int reqNum, ISocket from, ISocket to, Action<int>? onAfterSendingData)
+    private async Task MakeBridge(int reqNum, ISocket from, ISocket to, Action<int>? onAfterSendingData)
     {
-        Configs.Log(reqNum, $"Making bridge from {from.RemoteEndPoint.Address}:{from.RemoteEndPoint.Port} to {to.RemoteEndPoint.Address}:{to.RemoteEndPoint.Port}");
+        configs.Log(reqNum, $"Making bridge from {from.RemoteEndPoint.Address}:{from.RemoteEndPoint.Port} to {to.RemoteEndPoint.Address}:{to.RemoteEndPoint.Port}");
 
         try
         {
@@ -105,6 +112,6 @@ internal static class ConnectCommand
         catch
         {
         }
-        Configs.Log(reqNum, $"Bridge from {from.RemoteEndPoint.Address}:{from.RemoteEndPoint.Port} to {to.RemoteEndPoint.Address}:{to.RemoteEndPoint.Port} collapsed ...");
+        configs.Log(reqNum, $"Bridge from {from.RemoteEndPoint.Address}:{from.RemoteEndPoint.Port} to {to.RemoteEndPoint.Address}:{to.RemoteEndPoint.Port} collapsed ...");
     }
 }

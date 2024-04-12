@@ -1,5 +1,6 @@
-﻿using Socksy.Core;
-using System.Net;
+﻿using System.Text.Json;
+using Socksy.Core;
+using Socksy.Core.Common;
 
 bool debugMode = false;
 #if DEBUG
@@ -12,22 +13,25 @@ if (args.Contains("-v"))
     verboseLogging = true;
 }
 
-string[]? blacklist = null;
-if (File.Exists("./blacklist.txt"))
+string? optinosJson = null;
+if (File.Exists("./config.json"))
 {
-    blacklist = File.ReadAllLines("./blacklist.txt").Where(l => !string.IsNullOrWhiteSpace(l)).ToArray();
+    optinosJson = File.ReadAllText("./config.json");
 }
-Socks5Server server = new Socks5Server(IPEndPoint.Parse("127.0.0.1:3050"),
-    logFunction: debugMode ? (n, s) => Console.WriteLine($"{n:D6} {s}") : null,
-    options: new Socksy.Core.Common.ServerOptions
-    {
-        BlockedAddresses = blacklist
-    });
+
+var options = JsonSerializer.Deserialize<ServerOptions>(optinosJson ?? string.Empty);
+if(options is null ) options = ServerOptions.Default;
+
+Socks5Server server = new Socks5Server(
+    logFunction: debugMode ? LogFunction : null,
+    options: options!
+);
+
 server.Start();
 
-Console.WriteLine("Listening on 127.0.0.1:3050");
+Console.WriteLine($"Listening on {options.EndPoint}");
 if (verboseLogging || debugMode)
-    Console.Title = "Listening on 127.0.0.1:3050";
+    Console.Title = $"Listening on {options.EndPoint}";
 
 Console.CancelKeyPress += (s, e) =>
 {
@@ -63,3 +67,11 @@ await server;
 
 Console.WriteLine("OK");
 Console.WriteLine($"Total In: {server.InCommingBytes} bytes, Total Out: {server.OutGoingBytes} bytes");
+
+void LogFunction(int n, string s)
+{
+    Console.WriteLine(n < 0
+        ? s
+        : $"{n:D6} {s}"
+    );
+}

@@ -1,69 +1,48 @@
 ﻿using Socksy.Core.Commands;
 using Socksy.Core.Common;
-using System.Buffers;
-using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 
 namespace Socksy.Core;
 
 public sealed class Socks5Server : IDisposable
 {
-    // private const int VER = 5;
+    private readonly Configs configs;
+    private readonly ConnectCommand connectCommand;
 
-    // private readonly TcpServer _server;
-    // private readonly Action<Request>? _onClientConnected;
-    // private readonly Action<int, string>? _log;
-    // private Regex[]? _blackListRegexes = null;
 
-    // private readonly ConcurrentDictionary<int, ConnectionState> _activeConnections;
-    // private long _inCounter;
-    // private long _outCounter;
-
-    public Socks5Server(IPEndPoint localEndPoint, Action<Request>? onClientConnected = null, Action<int, string>? logFunction = null, ServerOptions? options = null)
+    public Socks5Server(Action<Request>? onClientConnected = null, Action<int, string>? logFunction = null, ServerOptions? options = null)
     {
-        Configs._server = new TcpServer(localEndPoint, OnConnectionEstablished);
-        Configs._onClientConnected = onClientConnected;
-        Configs._activeConnections = new ConcurrentDictionary<int, ConnectionState>();
-        Configs._log = logFunction;
-
-        if (options is not null)
-            InitializeOptions(options);
-    }
-
-    private void InitializeOptions(ServerOptions options)
-    {
-        if (options.BlockedAddresses is not null && options.BlockedAddresses.Length > 0)
+        configs = new Configs(options)
         {
-            Configs.Log(0, $"Initializing black list with {options.BlockedAddresses.Length} items");
-            Configs._blackListRegexes = new Regex[options.BlockedAddresses.Length];
-            for (int i = 0; i < options.BlockedAddresses.Length; i++)
-                Configs._blackListRegexes[i] = new Regex(options.BlockedAddresses[i], RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
-        }
+            OnClientConnected = onClientConnected,
+            LogAction = logFunction
+        };
+        configs.Server = new TcpServer(configs.EndPoint, OnConnectionEstablished);
+
+        connectCommand = new ConnectCommand(configs);
     }
 
-    public bool IsListening => Configs._server.IsListening;
+    public bool IsListening => configs.Server.IsListening;
 
-    public long OutGoingBytes => Configs._outCounter;
-    public long InCommingBytes => Configs._inCounter;
-    public IReadOnlyDictionary<int, ConnectionState> ActiveConnections => Configs._activeConnections;
+    public long OutGoingBytes => configs.OutCounter;
+    public long InCommingBytes => configs.InCounter;
+    public IReadOnlyDictionary<int, ConnectionState> ActiveConnections => configs.ActiveConnections;
 
     public void Start()
     {
-        Configs._server.Start();
+        configs.Server.Start();
     }
 
     public void Stop()
     {
-        Configs._server.Stop();
+        configs.Server.Stop();
     }
 
     private async Task OnConnectionEstablished(int reqNum, Request request)
     {
         try
         {
-            Configs._onClientConnected?.Invoke(request);
+            configs.OnClientConnected?.Invoke(request);
             var socket = request.CreateSocket();
 
             GetMethodSelector(reqNum, socket);
@@ -72,7 +51,7 @@ public sealed class Socks5Server : IDisposable
 
             if (req.CMD == RequestCMD.CONNECT)
             {
-                await ConnectCommand.ExecuteConnect(reqNum, socket, req);
+                await connectCommand.ExecuteConnect(reqNum, socket, req);
             }
             // else if(req.CMD == ...
             else
@@ -80,55 +59,55 @@ public sealed class Socks5Server : IDisposable
                 ReplyDTO.Create(
                     Configs.VER,
                     ReplyREP.Command_not_supported,
-                    Configs._server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
-                    Configs._server.ListeningAddress.GetAddressBytes(),
-                    (ushort)Configs._server.ListeningPort);
+                    configs.Server.ListeningAddress.AddressFamily == AddressFamily.InterNetwork ? AddressTYPE.IPV4 : AddressTYPE.IPV6,
+                    configs.Server.ListeningAddress.GetAddressBytes(),
+                    (ushort)configs.Server.ListeningPort);
                 throw new Exception("Request command is not supported");
             }
         }
         finally
         {
-            _ = Configs._activeConnections.TryRemove(reqNum, out var _);
+            _ = configs.ActiveConnections.TryRemove(reqNum, out var _);
         }
     }
 
     private RequestDTO GetRequest(int reqNum, ISocket socket)
     {
-        Configs.Log(reqNum, "Waiting for RequestDTO ...");
+        configs.Log(reqNum, "Waiting for RequestDTO ...");
         var req = RequestDTO.GetFromSocket(socket);
-        Configs.Log(reqNum, $"RequestDTO received. VER: {req.VER}, CMD: {req.CMD}, RSV: {req.RSV}, ATYPE: {req.ATYPE}, DST_ADDR: {req.DST_ADDR}, DST_ADDR_STRING: {req.DST_ADDR_STRING}, DST_ADDR_IPADDRESS: {req.DST_ADDR_IPADDRESS}");
-        Configs._activeConnections[reqNum] = ConnectionState.RequestReceived;
+        configs.Log(reqNum, $"RequestDTO received. VER: {req.VER}, CMD: {req.CMD}, RSV: {req.RSV}, ATYPE: {req.ATYPE}, DST_ADDR: {req.DST_ADDR}, DST_ADDR_STRING: {req.DST_ADDR_STRING}, DST_ADDR_IPADDRESS: {req.DST_ADDR_IPADDRESS}");
+        configs.ActiveConnections[reqNum] = ConnectionState.RequestReceived;
         return req;
     }
 
     private void SendSetMethod(int reqNum, ISocket socket)
     {
-        Configs.Log(reqNum, "Sending SetMethodDTO");
+        configs.Log(reqNum, "Sending SetMethodDTO");
         var sm = SetMethodDTO.Create(Configs.VER, AuthenticationMETHOD.NO_AUTHENTICATION_REQUIRED);
         sm.Send(socket);
-        Configs.Log(reqNum, $"SetMethod sent. ver: {sm.VER}, method: {sm.METHOD}");
-        Configs._activeConnections[reqNum] = ConnectionState.SetMethodSent;
+        configs.Log(reqNum, $"SetMethod sent. ver: {sm.VER}, method: {sm.METHOD}");
+        configs.ActiveConnections[reqNum] = ConnectionState.SetMethodSent;
     }
 
     private void GetMethodSelector(int reqNum, ISocket socket)
     {
-        Configs.Log(reqNum, "Waiting for MethodSelector ...");
+        configs.Log(reqNum, "Waiting for MethodSelector ...");
         var method = MethodSelectorDTO.GetFromSocket(socket);
         if (method is null || method.VER != 5 || !method.METHODS!.Contains((byte)AuthenticationMETHOD.NO_AUTHENTICATION_REQUIRED))
             throw new Exception("Bad request, client does not support 'NO AUTHENTICATION REQUIRED' method");
-        Configs.Log(reqNum, $"MethodSelector received. ver: {method.VER}, nmethods: {method.NMETHODS}, methods: '{string.Join(", ", method.METHODS!)}'");
-        Configs._activeConnections[reqNum] = ConnectionState.MethodSelectorReceived;
+        configs.Log(reqNum, $"MethodSelector received. ver: {method.VER}, nmethods: {method.NMETHODS}, methods: '{string.Join(", ", method.METHODS!)}'");
+        configs.ActiveConnections[reqNum] = ConnectionState.MethodSelectorReceived;
     }
 
     public TaskAwaiter GetAwaiter()
     {
-        return Configs._server.GetAwaiter();
+        return configs.Server.GetAwaiter();
     }
 
     public void Dispose()
     {
         Stop();
-        Configs._server.Dispose();
+        configs.Server.Dispose();
     }
 }
 

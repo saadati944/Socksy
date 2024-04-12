@@ -2,6 +2,14 @@
 
 internal static class Fixtures
 {
+    public static ServerOptions GetOptionsWithLocalendpointWithTemplatePortNumber()
+    {
+        return new ServerOptions
+        {
+            EndPoint = GetLocalendpointWithTemplatePortNumber().ToString()
+        };
+    }
+
     public static IPEndPoint GetLocalendpointWithTemplatePortNumber()
     {
         return new IPEndPoint(IPAddress.Loopback, GetNextFreePort());
