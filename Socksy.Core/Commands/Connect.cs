@@ -91,7 +91,7 @@ internal class ConnectCommand
 
         try
         {
-            int fails = 200;
+            int fails = configs.DisconnectAFterNPolls;
             while (true)
             {
                 var avail = from.Available;
@@ -102,7 +102,7 @@ internal class ConnectCommand
                     await Task.Delay(5);
                     continue;
                 }
-                fails = 200;
+                fails = configs.DisconnectAFterNPolls;
                 var buf = ArrayPool<byte>.Shared.Rent(avail);
                 from.Receive(new Span<byte>(buf, 0, avail));
                 to.Send(new Span<byte>(buf, 0, avail));

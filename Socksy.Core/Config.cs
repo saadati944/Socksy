@@ -18,6 +18,7 @@ internal class Configs
     public Regex[]? BlackListRegexes { get; set; } = null;
     public IPEndPoint EndPoint { get; set; } = IPEndPoint.Parse(ServerOptions.Default.EndPoint);
     public int SocketTimeOut = 20000;
+    public int DisconnectAFterNPolls = 4000;
 
     public long InCounter;
     public long OutCounter;
@@ -39,6 +40,11 @@ internal class Configs
         if(Options.SocketTimeOutMS > 0)
         {
             SocketTimeOut = Options.SocketTimeOutMS;
+        }
+
+        if(Options.DisconnectAFterNPolls > 0)
+        {
+            DisconnectAFterNPolls = Options.DisconnectAFterNPolls;
         }
 
         if (Options.BlackList is not null && Options.BlackList.Length > 0)
