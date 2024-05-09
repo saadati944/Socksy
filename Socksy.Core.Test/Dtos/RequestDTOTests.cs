@@ -22,7 +22,7 @@ public class RequestDTOTests
 
 
         // Act
-        var dto = RequestDTO.GetFromSocket(socket);
+        var dto = RequestDTO.GetFromSocket(socket, new Configs(null));
 
         // Assert
         Assert.Equal(5, dto.VER);
@@ -57,7 +57,7 @@ public class RequestDTOTests
 
 
         // Act
-        var dto = RequestDTO.GetFromSocket(socket);
+        var dto = RequestDTO.GetFromSocket(socket, new Configs(null));
 
         // Assert
         Assert.Equal(5, dto.VER);
@@ -90,7 +90,7 @@ public class RequestDTOTests
         socket.DataToReceive.Add(1); // dstport
 
         // Act
-        var dto = RequestDTO.GetFromSocket(socket);
+        var dto = RequestDTO.GetFromSocket(socket, new Configs(null));
 
         // Assert
         Assert.Equal(5, dto.VER);

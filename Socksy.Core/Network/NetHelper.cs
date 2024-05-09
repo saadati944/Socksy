@@ -18,15 +18,17 @@ internal static class NetHelper
         return tcpClient;
     }
 
-    internal static IPAddress? ResolveHost(string hostName)
+    internal static IPAddress? ResolveHost(string hostName, Configs config)
     {
-        var res = Dns.GetHostEntry(hostName);
-        return res.AddressList.FirstOrDefault();
-    }
+        if(config.DnsMap.Length > 0)
+        {
+            foreach (var mapping in config.DnsMap)
+            {
+                if(mapping.Item1.IsMatch(hostName))
+                    return mapping.Item2;
+            }
+        }
 
-    internal static IPAddress? ResolveHost(string hostName, AddressFamily addressFamily)
-    {
-        var res = Dns.GetHostEntry(hostName, addressFamily);
-        return res.AddressList.FirstOrDefault();
+        return Dns.GetHostAddresses(hostName).OrderBy(i => i.AddressFamily == AddressFamily.InterNetwork ? 0 : 1).FirstOrDefault();
     }
 }

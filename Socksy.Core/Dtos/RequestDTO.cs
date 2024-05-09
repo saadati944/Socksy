@@ -9,21 +9,15 @@ internal sealed class RequestDTO
     public byte RSV { get; private set; }
     public AddressTYPE ATYPE { get; private set; }
     public byte[]? DST_ADDR { get; private set; }
-    public string DST_ADDR_STRING => ATYPE == AddressTYPE.DOMAINNAME
-        ? System.Text.Encoding.ASCII.GetString(DST_ADDR!)
-        : string.Join(".", DST_ADDR!);
-
-    public IPAddress? DST_ADDR_IPADDRESS => ATYPE == AddressTYPE.DOMAINNAME
-        ? Dns.GetHostAddresses(DST_ADDR_STRING).OrderByDescending(i => i.AddressFamily == AddressFamily.InterNetwork ? 1 : 0).FirstOrDefault()
-        : new IPAddress(DST_ADDR!);
-
+    public string? DST_ADDR_STRING { get; private set; }
+    public IPAddress? DST_ADDR_IPADDRESS { get; private set; }
     public ushort DST_PORT { get; private set; }
 
     private RequestDTO()
     {
     }
 
-    public static RequestDTO GetFromSocket(ISocket socket)
+    public static RequestDTO GetFromSocket(ISocket socket, Configs config)
     {
         var data = new byte[4];
 
@@ -63,6 +57,14 @@ internal sealed class RequestDTO
 
         Helper.ReturnByteArray(data);
 
+        var DSTaddrString = atype == (int)AddressTYPE.DOMAINNAME
+        ? System.Text.Encoding.ASCII.GetString(DSTaddr!)
+        : string.Join(".", DSTaddr!);
+
+        var DSTaddrIp = atype == (int)AddressTYPE.DOMAINNAME
+            ? NetHelper.ResolveHost(DSTaddrString, config)
+            : new IPAddress(DSTaddr!);
+
         return new RequestDTO
         {
             VER = ver,
@@ -70,6 +72,8 @@ internal sealed class RequestDTO
             RSV = rsv,
             ATYPE = (AddressTYPE)atype,
             DST_ADDR = DSTaddr,
+            DST_ADDR_STRING = DSTaddrString,
+            DST_ADDR_IPADDRESS = DSTaddrIp,
             DST_PORT = DSTport
         };
     }

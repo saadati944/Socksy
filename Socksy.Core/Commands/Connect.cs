@@ -14,7 +14,7 @@ internal class ConnectCommand
 
     public async Task ExecuteConnect(int reqNum, ISocket socket, RequestDTO req)
     {
-        if (AddressIsInBlackList(req.DST_ADDR_STRING) || !AddressIsInWhiteList(req.DST_ADDR_STRING))
+        if (configs.AddressIsInBlackList(req.DST_ADDR_STRING) || !configs.AddressIsInWhiteList(req.DST_ADDR_STRING))
         {
             configs.Log(reqNum, "Requested address was in black list");
             var blockedRep = ReplyDTO.Create(
@@ -28,13 +28,14 @@ internal class ConnectCommand
             return;
         }
 
-        IPEndPoint remote_endpoint = new IPEndPoint(
-            req.ATYPE switch
-            {
-                AddressTYPE.IPV4 or AddressTYPE.IPV6 => new IPAddress(req.DST_ADDR!),
-                _ => Dns.GetHostAddresses(req.DST_ADDR_STRING, AddressFamily.InterNetwork)[0],
-            },
-            req.DST_PORT);
+        var addr = req.DST_ADDR_IPADDRESS;
+        if(addr is null)
+        {
+            configs.Log(reqNum, $"could not resolve host: {req.DST_ADDR_STRING}");
+            return;
+        }
+
+        IPEndPoint remote_endpoint = new IPEndPoint(addr, req.DST_PORT);
         configs.Log(reqNum, $"Connecting to remote endpoint. IP address: {remote_endpoint.Address}, port: {remote_endpoint.Port}");
         configs.ActiveConnections[reqNum] = ConnectionState.Connecting;
 
@@ -56,28 +57,6 @@ internal class ConnectCommand
         configs.Log(reqNum, "Exchanging data ...");
         configs.ActiveConnections[reqNum] = ConnectionState.ExchangingData;
         await ExchangeData(reqNum, remote, socket);
-    }
-
-    private bool AddressIsInWhiteList(string destinationAddress)
-    {
-        if (configs.WhiteListRegexes.Length == 0) return true;
-
-        for (int i = 0; i < configs.WhiteListRegexes.Length; i++)
-            if (configs.WhiteListRegexes[i].IsMatch(destinationAddress))
-                return true;
-
-        return false;
-    }
-
-    private bool AddressIsInBlackList(string destinationAddress)
-    {
-        if (configs.BlackListRegexes.Length == 0) return false;
-
-        for (int i = 0; i < configs.BlackListRegexes.Length; i++)
-            if (configs.BlackListRegexes[i].IsMatch(destinationAddress))
-                return true;
-
-        return false;
     }
 
     private async Task ExchangeData(int reqNum, ISocket remote, ISocket client)

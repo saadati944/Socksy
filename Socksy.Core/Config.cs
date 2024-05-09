@@ -17,9 +17,10 @@ internal class Configs
     public ServerOptions Options { get; init; }
     public Regex[] BlackListRegexes { get; set; } = [];
     public Regex[] WhiteListRegexes { get; set; } = [];
+    public Tuple<Regex, IPAddress>[] DnsMap { get; set; } = [];
     public IPEndPoint EndPoint { get; set; } = IPEndPoint.Parse(ServerOptions.Default.EndPoint);
-    public int SocketTimeOut = 20000;
-    public int DisconnectAFterNPolls = 2000;
+    public int SocketTimeOut;
+    public int DisconnectAFterNPolls;
 
     public long InCounter;
     public long OutCounter;
@@ -32,21 +33,17 @@ internal class Configs
 
     private void InitializeOptions()
     {
-        IPEndPoint endpoint;
-        if (!string.IsNullOrWhiteSpace(Options.EndPoint) && IPEndPoint.TryParse(Options.EndPoint, out endpoint!))
-        {
-            EndPoint = endpoint;
-        }
+        EndPoint = !string.IsNullOrWhiteSpace(Options.EndPoint) && IPEndPoint.TryParse(Options.EndPoint, out IPEndPoint? endpoint)
+            ? endpoint!
+            : IPEndPoint.Parse(ServerOptions.Default.EndPoint);
 
-        if(Options.SocketTimeOutMS > 0)
-        {
-            SocketTimeOut = Options.SocketTimeOutMS;
-        }
+        SocketTimeOut = Options.SocketTimeOutMS > 0
+            ? Options.SocketTimeOutMS
+            : ServerOptions.Default.SocketTimeOutMS;
 
-        if(Options.DisconnectAFterNPolls > 0)
-        {
-            DisconnectAFterNPolls = Options.DisconnectAFterNPolls;
-        }
+        DisconnectAFterNPolls = Options.DisconnectAFterNPolls > 0
+            ? Options.DisconnectAFterNPolls
+            : ServerOptions.Default.DisconnectAFterNPolls;
 
         if (Options.BlackList is not null && Options.BlackList.Length > 0)
         {
@@ -58,7 +55,7 @@ internal class Configs
 
         if (Options.WhiteList is not null && Options.WhiteList.Length > 0)
         {
-            if(BlackListRegexes.Length > 0)
+            if (BlackListRegexes.Length > 0)
             {
                 throw new Exception("Cannot use both blacklist and whitelist at the same time. Provide one instead");
             }
@@ -68,10 +65,45 @@ internal class Configs
             for (int i = 0; i < Options.WhiteList.Length; i++)
                 WhiteListRegexes[i] = new Regex(WildCardToRegex(Options.WhiteList[i]), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
         }
+
+        if (Options.DnsMap is not null && Options.DnsMap.Count > 0)
+        {
+            DnsMap = new Tuple<Regex, IPAddress>[Options.DnsMap.Count];
+            var index = 0;
+            foreach (var mapping in Options.DnsMap)
+            {
+                DnsMap[index++] = new Tuple<Regex, IPAddress>(
+                    new Regex(WildCardToRegex(mapping.Key), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200)),
+                    IPAddress.Parse(mapping.Value));
+            }
+        }
     }
 
-    private static string WildCardToRegex(string value) {
-        return "^" + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + "$"; 
+    public bool AddressIsInWhiteList(string destinationAddress)
+    {
+        if (WhiteListRegexes.Length == 0) return true;
+
+        for (int i = 0; i < WhiteListRegexes.Length; i++)
+            if (WhiteListRegexes[i].IsMatch(destinationAddress))
+                return true;
+
+        return false;
+    }
+
+    public bool AddressIsInBlackList(string destinationAddress)
+    {
+        if (BlackListRegexes.Length == 0) return false;
+
+        for (int i = 0; i < BlackListRegexes.Length; i++)
+            if (BlackListRegexes[i].IsMatch(destinationAddress))
+                return true;
+
+        return false;
+    }
+
+    private static string WildCardToRegex(string value)
+    {
+        return "^" + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + "$";
     }
 
     [Conditional("DEBUG")]
