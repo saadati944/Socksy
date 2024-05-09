@@ -1,0 +1,718 @@
+Listening on 0.0.0.0:3050
+000001 Waiting for MethodSelector ...
+000001 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000001 Sending SetMethodDTO
+000001 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000001 Waiting for RequestDTO ...
+000001 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000001 Requested address was in black list
+000001 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000002 Waiting for MethodSelector ...
+000002 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000002 Sending SetMethodDTO
+000002 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000002 Waiting for RequestDTO ...
+000002 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: fonts.gstatic.com, DST_ADDR_IPADDRESS: 142.250.185.99
+000002 Requested address was in black list
+000002 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000003 Waiting for MethodSelector ...
+000003 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000003 Sending SetMethodDTO
+000003 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000003 Waiting for RequestDTO ...
+000003 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gstatic.com, DST_ADDR_IPADDRESS: 142.250.184.227
+000003 Requested address was in black list
+000003 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000004 Waiting for MethodSelector ...
+000004 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000004 Sending SetMethodDTO
+000004 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000004 Waiting for RequestDTO ...
+000004 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000004 Requested address was in black list
+000004 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000005 Waiting for MethodSelector ...
+000005 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000005 Sending SetMethodDTO
+000005 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000005 Waiting for RequestDTO ...
+000005 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000005 Requested address was in black list
+000005 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000006 Waiting for MethodSelector ...
+000006 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000006 Sending SetMethodDTO
+000006 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000006 Waiting for RequestDTO ...
+000006 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000006 Requested address was in black list
+000006 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000007 Waiting for MethodSelector ...
+000007 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000007 Sending SetMethodDTO
+000007 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000007 Waiting for RequestDTO ...
+000007 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000007 Requested address was in black list
+000007 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000008 Waiting for MethodSelector ...
+000008 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000008 Sending SetMethodDTO
+000008 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000008 Waiting for RequestDTO ...
+000008 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000008 Requested address was in black list
+000008 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000009 Waiting for MethodSelector ...
+000009 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000009 Sending SetMethodDTO
+000009 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000009 Waiting for RequestDTO ...
+000009 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000009 Requested address was in black list
+000009 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000010 Waiting for MethodSelector ...
+000010 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000010 Sending SetMethodDTO
+000010 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000010 Waiting for RequestDTO ...
+000010 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000010 Requested address was in black list
+000010 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000011 Waiting for MethodSelector ...
+000011 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000011 Sending SetMethodDTO
+000011 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000011 Waiting for RequestDTO ...
+000011 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: fonts.gstatic.com, DST_ADDR_IPADDRESS: 142.250.185.99
+000011 Requested address was in black list
+000011 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000012 Waiting for MethodSelector ...
+000012 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000012 Sending SetMethodDTO
+000012 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000012 Waiting for RequestDTO ...
+000012 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gstatic.com, DST_ADDR_IPADDRESS: 142.250.184.227
+000012 Requested address was in black list
+000012 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000013 Waiting for MethodSelector ...
+000013 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000013 Sending SetMethodDTO
+000013 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000013 Waiting for RequestDTO ...
+000013 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000013 Requested address was in black list
+000013 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000014 Waiting for MethodSelector ...
+000014 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000014 Sending SetMethodDTO
+000014 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000014 Waiting for RequestDTO ...
+000014 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000014 Requested address was in black list
+000014 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000015 Waiting for MethodSelector ...
+000015 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000015 Sending SetMethodDTO
+000015 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000015 Waiting for RequestDTO ...
+000015 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000015 Requested address was in black list
+000015 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000016 Waiting for MethodSelector ...
+000016 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000016 Sending SetMethodDTO
+000016 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000016 Waiting for RequestDTO ...
+000016 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: learn.microsoft.com, DST_ADDR_IPADDRESS: 23.35.230.168
+000016 Connecting to remote endpoint. IP address: 88.221.126.2, port: 443
+000017 Waiting for MethodSelector ...
+000017 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000017 Sending SetMethodDTO
+000017 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000017 Waiting for RequestDTO ...
+000017 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: learn.microsoft.com, DST_ADDR_IPADDRESS: 23.35.230.168
+000017 Connecting to remote endpoint. IP address: 88.221.126.2, port: 443
+000018 Waiting for MethodSelector ...
+000018 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000018 Sending SetMethodDTO
+000018 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000018 Waiting for RequestDTO ...
+000018 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: learn.microsoft.com, DST_ADDR_IPADDRESS: 23.35.230.168
+000018 Connecting to remote endpoint. IP address: 88.221.126.2, port: 443
+000017 Connected: True
+000017 Sending Reply
+000016 Connected: True
+000016 Sending Reply
+000016 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000016 Exchanging data ...
+000017 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000017 Exchanging data ...
+000016 Making bridge from 127.0.0.1:56264 to ::ffff:88.221.126.2:443
+000017 Making bridge from 127.0.0.1:56265 to ::ffff:88.221.126.2:443
+000016 Making bridge from ::ffff:88.221.126.2:443 to 127.0.0.1:56264
+000017 Making bridge from ::ffff:88.221.126.2:443 to 127.0.0.1:56265
+000018 Connected: True
+000018 Sending Reply
+000018 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000018 Exchanging data ...
+000018 Making bridge from 127.0.0.1:56266 to ::ffff:88.221.126.2:443
+000018 Making bridge from ::ffff:88.221.126.2:443 to 127.0.0.1:56266
+000019 Waiting for MethodSelector ...
+000019 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000019 Sending SetMethodDTO
+000019 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000019 Waiting for RequestDTO ...
+000019 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: stackoverflow.com, DST_ADDR_IPADDRESS: 172.64.155.249
+000019 Connecting to remote endpoint. IP address: 172.64.155.249, port: 443
+000020 Waiting for MethodSelector ...
+000020 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000020 Sending SetMethodDTO
+000020 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000020 Waiting for RequestDTO ...
+000020 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: ajax.googleapis.com, DST_ADDR_IPADDRESS: 142.250.186.138
+000020 Requested address was in black list
+000020 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000021 Waiting for MethodSelector ...
+000021 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000021 Sending SetMethodDTO
+000021 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000021 Waiting for RequestDTO ...
+000021 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: cdn.sstatic.net, DST_ADDR_IPADDRESS: 172.64.147.34
+000021 Connecting to remote endpoint. IP address: 172.64.147.34, port: 443
+000022 Waiting for MethodSelector ...
+000022 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000022 Sending SetMethodDTO
+000022 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000022 Waiting for RequestDTO ...
+000022 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: cdn.cookielaw.org, DST_ADDR_IPADDRESS: 104.19.177.52
+000019 Connected: True
+000019 Sending Reply
+000022 Connecting to remote endpoint. IP address: 104.19.177.52, port: 443
+000019 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000019 Exchanging data ...
+000019 Making bridge from 127.0.0.1:56276 to ::ffff:172.64.155.249:443
+000021 Connected: True
+000021 Sending Reply
+000021 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000021 Exchanging data ...
+000021 Making bridge from 127.0.0.1:56278 to ::ffff:172.64.147.34:443
+000019 Making bridge from ::ffff:172.64.155.249:443 to 127.0.0.1:56276
+000023 Waiting for MethodSelector ...
+000023 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000023 Sending SetMethodDTO
+000023 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000023 Waiting for RequestDTO ...
+000021 Making bridge from ::ffff:172.64.147.34:443 to 127.0.0.1:56278
+000022 Connected: True
+000022 Sending Reply
+000022 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000022 Exchanging data ...
+000022 Making bridge from 127.0.0.1:56279 to ::ffff:104.19.177.52:443
+000022 Making bridge from ::ffff:104.19.177.52:443 to 127.0.0.1:56279
+000023 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: wcpstatic.microsoft.com, DST_ADDR_IPADDRESS: 13.107.213.45
+000023 Connecting to remote endpoint. IP address: 13.107.246.45, port: 443
+000024 Waiting for MethodSelector ...
+000024 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000024 Sending SetMethodDTO
+000024 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000024 Waiting for RequestDTO ...
+000023 Connected: True
+000023 Sending Reply
+000023 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000023 Exchanging data ...
+000023 Making bridge from 127.0.0.1:56284 to ::ffff:13.107.246.45:443
+000023 Making bridge from ::ffff:13.107.246.45:443 to 127.0.0.1:56284
+000024 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: js.monitor.azure.com, DST_ADDR_IPADDRESS: 13.107.246.45
+000024 Connecting to remote endpoint. IP address: 13.107.246.45, port: 443
+000025 Waiting for MethodSelector ...
+000025 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000025 Sending SetMethodDTO
+000025 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000025 Waiting for RequestDTO ...
+000025 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: wcpstatic.microsoft.com, DST_ADDR_IPADDRESS: 13.107.213.45
+000025 Connecting to remote endpoint. IP address: 13.107.246.45, port: 443
+000026 Waiting for MethodSelector ...
+000026 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000026 Sending SetMethodDTO
+000026 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000026 Waiting for RequestDTO ...
+000026 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: js.monitor.azure.com, DST_ADDR_IPADDRESS: 13.107.246.45
+000026 Connecting to remote endpoint. IP address: 13.107.246.45, port: 443
+000025 Connected: True
+000025 Sending Reply
+000026 Connected: True
+000026 Sending Reply
+000026 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000026 Exchanging data ...
+000026 Making bridge from 127.0.0.1:56289 to ::ffff:13.107.246.45:443
+000024 Connected: True
+000024 Sending Reply
+000025 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000025 Exchanging data ...
+000025 Making bridge from 127.0.0.1:56288 to ::ffff:13.107.246.45:443
+000024 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000024 Exchanging data ...
+000024 Making bridge from 127.0.0.1:56285 to ::ffff:13.107.246.45:443
+000026 Making bridge from ::ffff:13.107.246.45:443 to 127.0.0.1:56289
+000025 Making bridge from ::ffff:13.107.246.45:443 to 127.0.0.1:56288
+000024 Making bridge from ::ffff:13.107.246.45:443 to 127.0.0.1:56285
+000027 Waiting for MethodSelector ...
+000027 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000027 Sending SetMethodDTO
+000027 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000027 Waiting for RequestDTO ...
+000027 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000027 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000028 Waiting for MethodSelector ...
+000028 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000028 Sending SetMethodDTO
+000028 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000028 Waiting for RequestDTO ...
+000028 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000028 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000029 Waiting for MethodSelector ...
+000029 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000029 Sending SetMethodDTO
+000029 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000029 Waiting for RequestDTO ...
+000029 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000029 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000030 Waiting for MethodSelector ...
+000030 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000030 Sending SetMethodDTO
+000030 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000030 Waiting for RequestDTO ...
+000030 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000030 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000031 Waiting for MethodSelector ...
+000031 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000031 Sending SetMethodDTO
+000031 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000031 Waiting for RequestDTO ...
+000031 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000031 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000032 Waiting for MethodSelector ...
+000032 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000032 Sending SetMethodDTO
+000032 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000032 Waiting for RequestDTO ...
+000032 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.gravatar.com, DST_ADDR_IPADDRESS: 192.0.73.2
+000032 Connecting to remote endpoint. IP address: 192.0.73.2, port: 443
+000027 Connected: True
+000029 Connected: True
+000027 Sending Reply
+000029 Sending Reply
+000027 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000029 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000027 Exchanging data ...
+000029 Exchanging data ...
+000029 Making bridge from 127.0.0.1:56302 to ::ffff:192.0.73.2:443
+000027 Making bridge from 127.0.0.1:56296 to ::ffff:192.0.73.2:443
+000027 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56296
+000029 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56302
+000030 Connected: True
+000030 Sending Reply
+000028 Connected: True
+000028 Sending Reply
+000028 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000028 Exchanging data ...
+000028 Making bridge from 127.0.0.1:56301 to ::ffff:192.0.73.2:443
+000030 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000030 Exchanging data ...
+000030 Making bridge from 127.0.0.1:56303 to ::ffff:192.0.73.2:443
+000030 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56303
+000028 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56301
+000031 Connected: True
+000031 Sending Reply
+000031 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000031 Exchanging data ...
+000031 Making bridge from 127.0.0.1:56308 to ::ffff:192.0.73.2:443
+000031 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56308
+000032 Connected: True
+000032 Sending Reply
+000032 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000032 Exchanging data ...
+000032 Making bridge from 127.0.0.1:56309 to ::ffff:192.0.73.2:443
+000032 Making bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56309
+000032 Bridge from ::ffff:192.0.73.2:443 to 127.0.0.1:56309 collapsed ...
+000033 Waiting for MethodSelector ...
+000033 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000033 Sending SetMethodDTO
+000033 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000033 Waiting for RequestDTO ...
+000033 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: mscom.demdex.net, DST_ADDR_IPADDRESS: 52.49.110.165
+000033 Connecting to remote endpoint. IP address: 52.212.196.90, port: 443
+000033 Connected: True
+000033 Sending Reply
+000033 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000033 Exchanging data ...
+000033 Making bridge from 127.0.0.1:56314 to ::ffff:52.212.196.90:443
+000033 Making bridge from ::ffff:52.212.196.90:443 to 127.0.0.1:56314
+000034 Waiting for MethodSelector ...
+000034 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000034 Sending SetMethodDTO
+000034 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000034 Waiting for RequestDTO ...
+000034 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google-analytics.com, DST_ADDR_IPADDRESS: 142.250.185.142
+000034 Requested address was in black list
+000034 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000035 Waiting for MethodSelector ...
+000035 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000035 Sending SetMethodDTO
+000035 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000035 Waiting for RequestDTO ...
+000035 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: beacons4.gvt2.com, DST_ADDR_IPADDRESS: 216.239.32.116
+000035 Connecting to remote endpoint. IP address: 216.239.32.116, port: 443
+000036 Waiting for MethodSelector ...
+000036 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000036 Sending SetMethodDTO
+000036 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000036 Waiting for RequestDTO ...
+000036 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: pub.doubleverify.com, DST_ADDR_IPADDRESS: 104.18.167.224
+000035 Connected: True
+000035 Sending Reply
+000035 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000035 Exchanging data ...
+000035 Making bridge from 127.0.0.1:56326 to ::ffff:216.239.32.116:443
+000035 Making bridge from ::ffff:216.239.32.116:443 to 127.0.0.1:56326
+000036 Connecting to remote endpoint. IP address: 104.18.167.224, port: 443
+000037 Waiting for MethodSelector ...
+000037 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000037 Sending SetMethodDTO
+000037 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000037 Waiting for RequestDTO ...
+000037 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google-analytics.com, DST_ADDR_IPADDRESS: 142.250.185.142
+000037 Requested address was in black list
+000037 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000038 Waiting for MethodSelector ...
+000038 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000038 Sending SetMethodDTO
+000038 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000038 Waiting for RequestDTO ...
+000036 Connected: True
+000036 Sending Reply
+000036 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000036 Exchanging data ...
+000036 Making bridge from 127.0.0.1:56327 to ::ffff:104.18.167.224:443
+000038 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: securepubads.g.doubleclick.net, DST_ADDR_IPADDRESS: 142.250.184.194
+000036 Making bridge from ::ffff:104.18.167.224:443 to 127.0.0.1:56327
+000038 Connecting to remote endpoint. IP address: 142.250.186.162, port: 443
+000039 Waiting for MethodSelector ...
+000039 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000039 Sending SetMethodDTO
+000039 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000039 Waiting for RequestDTO ...
+000038 Connected: True
+000038 Sending Reply
+000038 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000038 Exchanging data ...
+000038 Making bridge from 127.0.0.1:56332 to ::ffff:142.250.186.162:443
+000038 Making bridge from ::ffff:142.250.186.162:443 to 127.0.0.1:56332
+000039 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: dc85ce8d4316f22833f81f4802d68c6f.safeframe.googlesyndication.com, DST_ADDR_IPADDRESS: 216.58.212.161
+000039 Requested address was in black list
+000039 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000040 Waiting for MethodSelector ...
+000040 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000040 Sending SetMethodDTO
+000040 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000040 Waiting for RequestDTO ...
+000040 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000040 Requested address was in black list
+000040 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000041 Waiting for MethodSelector ...
+000041 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000041 Sending SetMethodDTO
+000041 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000041 Waiting for RequestDTO ...
+000041 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: beacons4.gvt2.com, DST_ADDR_IPADDRESS: 216.239.32.116
+000041 Connecting to remote endpoint. IP address: 216.239.32.116, port: 443
+000042 Waiting for MethodSelector ...
+000042 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000042 Sending SetMethodDTO
+000042 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000042 Waiting for RequestDTO ...
+000042 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: pub.doubleverify.com, DST_ADDR_IPADDRESS: 104.18.167.224
+000042 Connecting to remote endpoint. IP address: 104.18.167.224, port: 443
+000043 Waiting for MethodSelector ...
+000043 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000043 Sending SetMethodDTO
+000043 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000043 Waiting for RequestDTO ...
+000044 Waiting for MethodSelector ...
+000044 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000044 Sending SetMethodDTO
+000044 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000044 Waiting for RequestDTO ...
+000044 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: dc85ce8d4316f22833f81f4802d68c6f.safeframe.googlesyndication.com, DST_ADDR_IPADDRESS: 216.58.212.161
+000044 Requested address was in black list
+000044 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000045 Waiting for MethodSelector ...
+000045 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000045 Sending SetMethodDTO
+000045 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000045 Waiting for RequestDTO ...
+000046 Waiting for MethodSelector ...
+000046 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000046 Sending SetMethodDTO
+000046 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000046 Waiting for RequestDTO ...
+000047 Waiting for MethodSelector ...
+000047 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000047 Sending SetMethodDTO
+000047 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000047 Waiting for RequestDTO ...
+000048 Waiting for MethodSelector ...
+000048 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000048 Sending SetMethodDTO
+000048 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000048 Waiting for RequestDTO ...
+000048 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: securepubads.g.doubleclick.net, DST_ADDR_IPADDRESS: 142.250.184.194
+000048 Connecting to remote endpoint. IP address: 142.250.186.162, port: 443
+000049 Waiting for MethodSelector ...
+000049 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000049 Sending SetMethodDTO
+000049 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000049 Waiting for RequestDTO ...
+000049 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000049 Requested address was in black list
+000049 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000050 Waiting for MethodSelector ...
+000050 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000050 Sending SetMethodDTO
+000050 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000050 Waiting for RequestDTO ...
+000041 Connected: True
+000041 Sending Reply
+000041 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000041 Exchanging data ...
+000041 Making bridge from 127.0.0.1:56341 to ::ffff:216.239.32.116:443
+000041 Making bridge from ::ffff:216.239.32.116:443 to 127.0.0.1:56341
+000048 Connected: True
+000048 Sending Reply
+000048 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000048 Exchanging data ...
+000048 Making bridge from 127.0.0.1:56348 to ::ffff:142.250.186.162:443
+000042 Connected: True
+000042 Sending Reply
+000042 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000042 Exchanging data ...
+000042 Making bridge from 127.0.0.1:56342 to ::ffff:104.18.167.224:443
+000048 Making bridge from ::ffff:142.250.186.162:443 to 127.0.0.1:56348
+000042 Making bridge from ::ffff:104.18.167.224:443 to 127.0.0.1:56342
+000050 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: browser.events.data.microsoft.com, DST_ADDR_IPADDRESS: 20.42.72.131
+000050 Connecting to remote endpoint. IP address: 52.182.143.214, port: 443
+000051 Waiting for MethodSelector ...
+000051 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000051 Sending SetMethodDTO
+000051 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000051 Waiting for RequestDTO ...
+000051 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: browser.events.data.microsoft.com, DST_ADDR_IPADDRESS: 20.42.72.131
+000051 Connecting to remote endpoint. IP address: 52.182.143.214, port: 443
+000052 Waiting for MethodSelector ...
+000052 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000052 Sending SetMethodDTO
+000052 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000052 Waiting for RequestDTO ...
+000052 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: accounts.google.com, DST_ADDR_IPADDRESS: 74.125.206.84
+000052 Requested address was in black list
+000052 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000053 Waiting for MethodSelector ...
+000053 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000053 Sending SetMethodDTO
+000053 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000053 Waiting for RequestDTO ...
+000053 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: pagead2.googlesyndication.com, DST_ADDR_IPADDRESS: 142.250.181.226
+000053 Requested address was in black list
+000053 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000054 Waiting for MethodSelector ...
+000054 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000054 Sending SetMethodDTO
+000054 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000054 Waiting for RequestDTO ...
+000054 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: accounts.google.com, DST_ADDR_IPADDRESS: 74.125.206.84
+000054 Requested address was in black list
+000054 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000055 Waiting for MethodSelector ...
+000055 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000055 Sending SetMethodDTO
+000055 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000055 Waiting for RequestDTO ...
+000055 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: pagead2.googlesyndication.com, DST_ADDR_IPADDRESS: 142.250.181.226
+000055 Requested address was in black list
+000055 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000056 Waiting for MethodSelector ...
+000056 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000056 Sending SetMethodDTO
+000056 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000056 Waiting for RequestDTO ...
+000056 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: accounts.google.com, DST_ADDR_IPADDRESS: 74.125.206.84
+000056 Requested address was in black list
+000056 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000050 Connected: True
+000050 Sending Reply
+000050 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000050 Exchanging data ...
+000050 Making bridge from 127.0.0.1:56356 to ::ffff:52.182.143.214:443
+000050 Making bridge from ::ffff:52.182.143.214:443 to 127.0.0.1:56356
+000051 Connected: True
+000051 Sending Reply
+000051 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000051 Exchanging data ...
+000051 Making bridge from 127.0.0.1:56362 to ::ffff:52.182.143.214:443
+000051 Making bridge from ::ffff:52.182.143.214:443 to 127.0.0.1:56362
+000057 Waiting for MethodSelector ...
+000057 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000057 Sending SetMethodDTO
+000057 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000057 Waiting for RequestDTO ...
+000057 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000057 Requested address was in black list
+000057 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000058 Waiting for MethodSelector ...
+000058 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000058 Sending SetMethodDTO
+000058 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000058 Waiting for RequestDTO ...
+000058 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000058 Requested address was in black list
+000058 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000059 Waiting for MethodSelector ...
+000059 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000059 Sending SetMethodDTO
+000059 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000059 Waiting for RequestDTO ...
+000059 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: browser.events.data.microsoft.com, DST_ADDR_IPADDRESS: 20.42.72.131
+000059 Connecting to remote endpoint. IP address: 52.182.143.214, port: 443
+000059 Connected: True
+000059 Sending Reply
+000059 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000059 Exchanging data ...
+000059 Making bridge from 127.0.0.1:56378 to ::ffff:52.182.143.214:443
+000059 Making bridge from ::ffff:52.182.143.214:443 to 127.0.0.1:56378
+000060 Waiting for MethodSelector ...
+000060 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000060 Sending SetMethodDTO
+000060 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000060 Waiting for RequestDTO ...
+000060 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: browser.events.data.microsoft.com, DST_ADDR_IPADDRESS: 20.42.72.131
+000060 Connecting to remote endpoint. IP address: 52.182.143.214, port: 443
+000060 Connected: True
+000060 Sending Reply
+000060 Reply Sent. VER: 5, REP: Succeeded, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000060 Exchanging data ...
+000060 Making bridge from 127.0.0.1:56380 to ::ffff:52.182.143.214:443
+000060 Making bridge from ::ffff:52.182.143.214:443 to 127.0.0.1:56380
+000061 Waiting for MethodSelector ...
+000061 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000061 Sending SetMethodDTO
+000061 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000061 Waiting for RequestDTO ...
+000061 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000061 Requested address was in black list
+000061 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000062 Waiting for MethodSelector ...
+000062 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000062 Sending SetMethodDTO
+000062 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000062 Waiting for RequestDTO ...
+000062 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000062 Requested address was in black list
+000062 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000016 Bridge from ::ffff:88.221.126.2:443 to 127.0.0.1:56264 collapsed ...
+000063 Waiting for MethodSelector ...
+000063 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000063 Sending SetMethodDTO
+000063 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000063 Waiting for RequestDTO ...
+000063 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000063 Requested address was in black list
+000063 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000064 Waiting for MethodSelector ...
+000064 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000064 Sending SetMethodDTO
+000064 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000064 Waiting for RequestDTO ...
+000064 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: content-autofill.googleapis.com, DST_ADDR_IPADDRESS: 142.250.181.234
+000064 Requested address was in black list
+000064 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000065 Waiting for MethodSelector ...
+000065 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000065 Sending SetMethodDTO
+000065 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000065 Waiting for RequestDTO ...
+000065 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000065 Requested address was in black list
+000065 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000066 Waiting for MethodSelector ...
+000066 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000066 Sending SetMethodDTO
+000066 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000066 Waiting for RequestDTO ...
+000066 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000066 Requested address was in black list
+000066 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000067 Waiting for MethodSelector ...
+000067 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000067 Sending SetMethodDTO
+000067 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000067 Waiting for RequestDTO ...
+000067 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000067 Requested address was in black list
+000067 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000068 Waiting for MethodSelector ...
+000068 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000068 Sending SetMethodDTO
+000068 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000068 Waiting for RequestDTO ...
+000068 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: play.google.com, DST_ADDR_IPADDRESS: 142.250.185.142
+000068 Requested address was in black list
+000068 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000069 Waiting for MethodSelector ...
+000069 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000069 Sending SetMethodDTO
+000069 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000069 Waiting for RequestDTO ...
+000069 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000069 Requested address was in black list
+000069 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000070 Waiting for MethodSelector ...
+000070 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000070 Sending SetMethodDTO
+000070 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000070 Waiting for RequestDTO ...
+000070 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: play.google.com, DST_ADDR_IPADDRESS: 142.250.185.142
+000070 Requested address was in black list
+000070 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000071 Waiting for MethodSelector ...
+000071 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000071 Sending SetMethodDTO
+000071 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000071 Waiting for RequestDTO ...
+000071 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000071 Requested address was in black list
+000071 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000072 Waiting for MethodSelector ...
+000072 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000072 Sending SetMethodDTO
+000072 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000072 Waiting for RequestDTO ...
+000072 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000072 Requested address was in black list
+000072 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000073 Waiting for MethodSelector ...
+000073 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000073 Sending SetMethodDTO
+000073 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000073 Waiting for RequestDTO ...
+000073 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000073 Requested address was in black list
+000073 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0
+000074 Waiting for MethodSelector ...
+000074 MethodSelector received. ver: 5, nmethods: 1, methods: '0'
+000074 Sending SetMethodDTO
+000074 SetMethod sent. ver: 5, method: NO_AUTHENTICATION_REQUIRED
+000074 Waiting for RequestDTO ...
+000074 RequestDTO received. VER: 5, CMD: CONNECT, RSV: 0, ATYPE: DOMAINNAME, DST_ADDR_STRING: www.google.com, DST_ADDR_IPADDRESS: 216.239.38.120
+000074 Requested address was in black list
+000074 Not-Allowed Reply Sent. VER: 5, REP: Connection_not_allowed_by_ruleset, RSV: 0, ATYPE: IPV4, BND_ADDR: System.Byte[], BND_ADDR_STRING: 0, 0, 0, 0

@@ -75,7 +75,7 @@ public sealed class Socks5Server : IDisposable
     {
         configs.Log(reqNum, "Waiting for RequestDTO ...");
         var req = RequestDTO.GetFromSocket(socket);
-        configs.Log(reqNum, $"RequestDTO received. VER: {req.VER}, CMD: {req.CMD}, RSV: {req.RSV}, ATYPE: {req.ATYPE}, DST_ADDR: {req.DST_ADDR}, DST_ADDR_STRING: {req.DST_ADDR_STRING}, DST_ADDR_IPADDRESS: {req.DST_ADDR_IPADDRESS}");
+        configs.Log(reqNum, $"RequestDTO received. VER: {req.VER}, CMD: {req.CMD}, RSV: {req.RSV}, ATYPE: {req.ATYPE}, DST_ADDR_STRING: {req.DST_ADDR_STRING}, DST_ADDR_IPADDRESS: {req.DST_ADDR_IPADDRESS}");
         configs.ActiveConnections[reqNum] = ConnectionState.RequestReceived;
         return req;
     }

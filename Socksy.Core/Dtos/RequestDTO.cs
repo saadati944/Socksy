@@ -11,7 +11,7 @@ internal sealed class RequestDTO
     public byte[]? DST_ADDR { get; private set; }
     public string DST_ADDR_STRING => ATYPE == AddressTYPE.DOMAINNAME
         ? System.Text.Encoding.ASCII.GetString(DST_ADDR!)
-        : string.Join(", ", DST_ADDR!);
+        : string.Join(".", DST_ADDR!);
 
     public IPAddress? DST_ADDR_IPADDRESS => ATYPE == AddressTYPE.DOMAINNAME
         ? Dns.GetHostAddresses(DST_ADDR_STRING).OrderByDescending(i => i.AddressFamily == AddressFamily.InterNetwork ? 1 : 0).FirstOrDefault()

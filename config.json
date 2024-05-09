@@ -1,10 +1,16 @@
 {
     "BlackList": [],
-    "WhiteList": [],
+    "WhiteList": [
+        "*.google.com",
+        "*.googleapis.com",
+        "*.googlesyndication.com",
+        "*.gstatic.com",
+        "*.google-analytics.com"
+    ],
     "DnsMap": [
 
     ],
     "EndPoint": "0.0.0.0:3050",
     "SocketTimeOutMS": 20000,
-    "DisconnectAFterNPolls": 4000
+    "DisconnectAFterNPolls": 2000
 }

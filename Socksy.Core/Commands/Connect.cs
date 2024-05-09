@@ -14,7 +14,7 @@ internal class ConnectCommand
 
     public async Task ExecuteConnect(int reqNum, ISocket socket, RequestDTO req)
     {
-        if (AddressIsInBlackList(req.DST_ADDR_STRING))
+        if (AddressIsInBlackList(req.DST_ADDR_STRING) || !AddressIsInWhiteList(req.DST_ADDR_STRING))
         {
             configs.Log(reqNum, "Requested address was in black list");
             var blockedRep = ReplyDTO.Create(
@@ -58,14 +58,24 @@ internal class ConnectCommand
         await ExchangeData(reqNum, remote, socket);
     }
 
+    private bool AddressIsInWhiteList(string destinationAddress)
+    {
+        if (configs.WhiteListRegexes.Length == 0) return true;
+
+        for (int i = 0; i < configs.WhiteListRegexes.Length; i++)
+            if (configs.WhiteListRegexes[i].IsMatch(destinationAddress))
+                return true;
+
+        return false;
+    }
+
     private bool AddressIsInBlackList(string destinationAddress)
     {
-        // if (configs.BlackListRegexes is null || configs.BlackListRegexes.Length == 0)
-        //     return false;
+        if (configs.BlackListRegexes.Length == 0) return false;
 
-        // for (int i = 0; i < configs.BlackListRegexes.Length; i++)
-        //     if (configs.BlackListRegexes[i].IsMatch(destinationAddress))
-        //         return true;
+        for (int i = 0; i < configs.BlackListRegexes.Length; i++)
+            if (configs.BlackListRegexes[i].IsMatch(destinationAddress))
+                return true;
 
         return false;
     }

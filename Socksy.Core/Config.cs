@@ -15,10 +15,11 @@ internal class Configs
     public Action<int, string>? LogAction { get; set; }
 
     public ServerOptions Options { get; init; }
-    public Regex[]? BlackListRegexes { get; set; } = null;
+    public Regex[] BlackListRegexes { get; set; } = [];
+    public Regex[] WhiteListRegexes { get; set; } = [];
     public IPEndPoint EndPoint { get; set; } = IPEndPoint.Parse(ServerOptions.Default.EndPoint);
     public int SocketTimeOut = 20000;
-    public int DisconnectAFterNPolls = 4000;
+    public int DisconnectAFterNPolls = 2000;
 
     public long InCounter;
     public long OutCounter;
@@ -52,8 +53,25 @@ internal class Configs
             Log(-1, $"Initializing black list with {Options.BlackList.Length} items");
             BlackListRegexes = new Regex[Options.BlackList.Length];
             for (int i = 0; i < Options.BlackList.Length; i++)
-                BlackListRegexes[i] = new Regex(Options.BlackList[i], RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
+                BlackListRegexes[i] = new Regex(WildCardToRegex(Options.BlackList[i]), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
         }
+
+        if (Options.WhiteList is not null && Options.WhiteList.Length > 0)
+        {
+            if(BlackListRegexes.Length > 0)
+            {
+                throw new Exception("Cannot use both blacklist and whitelist at the same time. Provide one instead");
+            }
+
+            Log(-1, $"Initializing while list with {Options.WhiteList.Length} items");
+            WhiteListRegexes = new Regex[Options.WhiteList.Length];
+            for (int i = 0; i < Options.WhiteList.Length; i++)
+                WhiteListRegexes[i] = new Regex(WildCardToRegex(Options.WhiteList[i]), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
+        }
+    }
+
+    private static string WildCardToRegex(string value) {
+        return "^" + Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*") + "$"; 
     }
 
     [Conditional("DEBUG")]
