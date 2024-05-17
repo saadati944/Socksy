@@ -1,4 +1,5 @@
 {
+    "EndPoint": "0.0.0.0:3050",
     "BlackList": [
         "*.google.com",
         "*.googleapis.com",
@@ -10,7 +11,7 @@
     "DnsMap": {
         "mylittlehsot*": "127.0.0.1"
     },
-    "EndPoint": "0.0.0.0:3050",
+    "BandWidth": " 128 kb ",
     "SocketTimeOutMS": 20000,
     "DisconnectAFterNPolls": 2000
 }

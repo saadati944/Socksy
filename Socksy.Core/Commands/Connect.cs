@@ -92,6 +92,9 @@ internal class ConnectCommand
                     continue;
                 }
                 fails = configs.DisconnectAFterNPolls;
+
+                avail = await configs.GetAllowedBytesToReceive(avail);
+
                 var buf = ArrayPool<byte>.Shared.Rent(avail);
                 from.Receive(new Span<byte>(buf, 0, avail));
                 to.Send(new Span<byte>(buf, 0, avail));

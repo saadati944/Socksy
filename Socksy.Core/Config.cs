@@ -18,6 +18,8 @@ internal class Configs
     public Regex[] BlackListRegexes { get; set; } = [];
     public Regex[] WhiteListRegexes { get; set; } = [];
     public Tuple<Regex, IPAddress>[] DnsMap { get; set; } = [];
+    public int BandWidthBytesPerSecond;
+    public BandWidthLimiter? BandWidthLimiter { get; private set; }
     public IPEndPoint EndPoint { get; set; } = IPEndPoint.Parse(ServerOptions.Default.EndPoint);
     public int SocketTimeOut;
     public int DisconnectAFterNPolls;
@@ -50,20 +52,22 @@ internal class Configs
             Log(-1, $"Initializing black list with {Options.BlackList.Length} items");
             BlackListRegexes = new Regex[Options.BlackList.Length];
             for (int i = 0; i < Options.BlackList.Length; i++)
+            {
                 BlackListRegexes[i] = new Regex(WildCardToRegex(Options.BlackList[i]), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
+            }
         }
 
         if (Options.WhiteList is not null && Options.WhiteList.Length > 0)
         {
             if (BlackListRegexes.Length > 0)
-            {
                 throw new Exception("Cannot use both blacklist and whitelist at the same time. Provide one instead");
-            }
 
             Log(-1, $"Initializing while list with {Options.WhiteList.Length} items");
             WhiteListRegexes = new Regex[Options.WhiteList.Length];
             for (int i = 0; i < Options.WhiteList.Length; i++)
+            {
                 WhiteListRegexes[i] = new Regex(WildCardToRegex(Options.WhiteList[i]), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200));
+            }
         }
 
         if (Options.DnsMap is not null && Options.DnsMap.Count > 0)
@@ -76,6 +80,26 @@ internal class Configs
                     new Regex(WildCardToRegex(mapping.Key), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(200)),
                     IPAddress.Parse(mapping.Value));
             }
+        }
+
+        if (!string.IsNullOrWhiteSpace(Options.BandWidth) && Options.BandWidth.Trim().Length > 2)
+        {
+            var bandWidth = Options.BandWidth.Trim().ToLower();
+            var unitString = bandWidth.Substring(bandWidth.Length - 2, 2);
+            var valueString = bandWidth.Substring(0, bandWidth.Length - 2).Trim();
+            var value = decimal.Parse(valueString);
+            BandWidthBytesPerSecond = unitString switch
+            {
+                "kb" => (int)value * 1000,
+                "mb" => (int)value * 1000 * 1000,
+                "gb" => (int)value * 1000 * 1000 * 1000,
+                _ => throw new Exception("possible units for bandwith are: kb, mb, gb")
+            };
+
+            if(value <= 0)
+                throw new Exception("bandwidth value should be a positive number");
+
+            BandWidthLimiter = new BandWidthLimiter(BandWidthBytesPerSecond);
         }
     }
 
@@ -109,4 +133,10 @@ internal class Configs
     [Conditional("DEBUG")]
     public void Log(int requestNumber, string message)
         => LogAction?.Invoke(requestNumber, message);
+
+    internal async ValueTask<int> GetAllowedBytesToReceive(int avail)
+    {
+        if(BandWidthLimiter is null) return avail;
+        return await BandWidthLimiter.GetAllowedBytes(avail);
+    }
 }

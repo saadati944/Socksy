@@ -9,7 +9,7 @@ internal sealed class RequestDTO
     public byte RSV { get; private set; }
     public AddressTYPE ATYPE { get; private set; }
     public byte[]? DST_ADDR { get; private set; }
-    public string? DST_ADDR_STRING { get; private set; }
+    public string DST_ADDR_STRING { get; private set; } = "";
     public IPAddress? DST_ADDR_IPADDRESS { get; private set; }
     public ushort DST_PORT { get; private set; }
 
