@@ -94,6 +94,8 @@ internal class ConnectCommand
                 fails = configs.DisconnectAFterNPolls;
 
                 avail = await configs.GetAllowedBytesToReceive(avail);
+                if(avail == 0)
+                    continue;
 
                 var buf = ArrayPool<byte>.Shared.Rent(avail);
                 from.Receive(new Span<byte>(buf, 0, avail));
