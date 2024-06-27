@@ -1,17 +1,12 @@
 {
     "EndPoint": "0.0.0.0:3050",
     "BlackList": [
-        "*.google.com",
-        "*.googleapis.com",
-        "*.googlesyndication.com",
-        "*.gstatic.com",
-        "*.google-analytics.com"
+        "*.microsoft.com"
     ],
     "WhiteList": [],
     "DnsMap": {
         "mylittlehsot*": "127.0.0.1"
     },
-    "BandWidth": " 128 kb ",
-    "SocketTimeOutMS": 20000,
-    "DisconnectAFterNPolls": 2000
+    "BandWidth": " 12328 kb ",
+    "SocketTimeOutMS": 20000
 }
